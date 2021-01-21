@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   post 'workers', to: 'workers#create'
   get 'profile', to: 'workers#show'
+  post 'login', to: 'sessions#login'
 end
