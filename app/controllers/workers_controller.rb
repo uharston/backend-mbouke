@@ -17,7 +17,7 @@ class WorkersController < ApplicationController
         decoded_hash = decode_token 
         if !decoded_hash.empty? 
             @worker = Worker.find(decoded_hash[0]['worker_id'])
-            render json: {success: true, user: { email: @worker.email }}
+            render json: {success: true, user: { email: @worker.email, country: @worker.country, city: @worker.city, phone_number: @worker.phone_number, service: @worker.service  }}
         else 
             render json: {success: false}
         end
