@@ -1,5 +1,5 @@
 class Worker < ApplicationRecord
-    # validates :email, uniqueness: true
+    has_secure_password
     validates :service, presence: true
     validates :first_name, presence: true
     validates :last_name, presence: true
