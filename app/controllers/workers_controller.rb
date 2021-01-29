@@ -27,7 +27,10 @@ class WorkersController < ApplicationController
     private 
 
     def signup_params 
-        params.require(:user).permit(:service, :country, :city, :first_name, :last_name, :business_name, :phone_number, :email, :password)
+        default_params = params.require(:user).permit(:service, :country, :city, :first_name, :last_name, :business_name, :phone_number, :email, :password)
+        lowercase_email_params = default_params.dup 
+        lowercase_email_params[:email] = default_params[:email].downcase
+        return lowercase_email_params
     end 
 
     def decode_token 

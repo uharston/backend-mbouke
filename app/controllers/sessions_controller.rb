@@ -14,7 +14,10 @@ class SessionsController < ApplicationController
     private 
 
     def signup_params 
-        params.require(:user).permit(:email, :password)
+        default_params = params.require(:user).permit(:email, :password)
+        lowercase_email_params = default_params.dup 
+        lowercase_email_params[:email] = default_params[:email].downcase
+        return lowercase_email_params
     end 
 
 end
