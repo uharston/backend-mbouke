@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
         if @worker && @worker.authenticate(signup_params[:password]) 
             payload = {worker_id: @worker.id}
             token = JWT.encode(payload, 'secret')
-            render json: {success: true, jwt: token }
+            render json: {success: true, user: {name: @worker.first_name, email: @worker.email}}
         else
-            render json: {success: false, errors: "Authentication Failed :("}
+            render json: {success: false, errors: "Authentication Failed :(", user: nil }
         end
     end 
 
